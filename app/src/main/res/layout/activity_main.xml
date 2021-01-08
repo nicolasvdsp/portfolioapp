@@ -6,29 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/picture_view"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:padding="10dp"
-        android:layout_alignParentStart="true"/>
-
-    <TextView
-        android:id="@+id/name_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/picture_view"
-        android:text="Nicolas van der Straten"
-        android:paddingLeft="10dp"
-        android:textStyle="bold"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rv_projects"/>
 
 
-    <TextView
-        android:id="@+id/age_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/picture_view"
-        android:layout_below="@id/name_view"
-        android:paddingTop="10dp"
-        android:text="42"/>
+    
 </RelativeLayout>
