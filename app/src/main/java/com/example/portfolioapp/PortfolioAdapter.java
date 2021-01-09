@@ -22,16 +22,16 @@ import java.util.LinkedList;
 public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.ProjectViewHolder> {
         private final LinkedList<String> mProjectList_title;
         private final LinkedList<String> mProjectList_image;
-        //private final LinkedList<String> mProjectList_description;
+        private final LinkedList<String> mProjectList_description;
 
         private LayoutInflater mInflater;
 
-        public PortfolioAdapter(Context context,
-                                 LinkedList<String> projectList_title, LinkedList<String> projectList_image/*, LinkedList<String> projectList_description*/) {
+        public PortfolioAdapter(Context context, //dit is de constructor
+                                 LinkedList<String> projectList_title, LinkedList<String> projectList_image, LinkedList<String> projectList_description) {
             mInflater = LayoutInflater.from(context);
             this.mProjectList_title = projectList_title;
             this.mProjectList_image = projectList_image;
-            //this.mProjectList_description = projectList_description;
+            this.mProjectList_description = projectList_description;
         }
 
 
@@ -49,12 +49,13 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Proj
         public void onBindViewHolder(@NonNull ProjectViewHolder holder, int position) {
             String title = mProjectList_title.get(position);
             String image = mProjectList_image.get(position);
-            //String description = mProjectList_description.get(position);
 
             holder.titleView.setText(String.format("%s", title));
-            //holder.descriptionView.setText(String.format("%s", description));
             Picasso.get().load("http://www.hammerheaddesign.be" + image).into(holder.imageView);
+            //geen holders meer toevoegen als je niets in de recyclerview wil steken
 
+            String description = mProjectList_description.get(position);
+            // hieronder de rest van de detal_veldjes
 
             holder.btn_toDetail.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -62,7 +63,7 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Proj
                     Intent intent = new Intent (v.getContext(), ProjectDetail.class);
 
                     intent.putExtra("title", title); //verwijst naar String title = mProjectList
-                    //intent.putExtra("description", description);
+                    intent.putExtra("description", description);
 
 
                     v.getContext().startActivity(intent);

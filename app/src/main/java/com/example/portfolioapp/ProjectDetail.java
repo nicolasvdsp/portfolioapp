@@ -10,10 +10,10 @@ import android.widget.TextView;
 public class ProjectDetail extends AppCompatActivity {
 
     String selectedTitle;
-    //String selectedDescription;
+    String selectedDescription;
 
     TextView mTitleTextView;
-    //TextView mDescriptionView;
+    TextView mDescriptionView;
 
 
     @Override
@@ -23,13 +23,13 @@ public class ProjectDetail extends AppCompatActivity {
 
         Intent intent = getIntent();
         selectedTitle = intent.getStringExtra("title");
-        //selectedDescription = intent.getStringExtra("description");
+        selectedDescription = intent.getStringExtra("description");
 
         mTitleTextView = (TextView) findViewById(R.id.selected_title);
-        //mDescriptionView = (TextView) findViewById(R.id.selected_description);
+        mDescriptionView = (TextView) findViewById(R.id.selected_description);
 
         mTitleTextView.setText(selectedTitle);
-        //mDescriptionView.setText(selectedDescription);
+        mDescriptionView.setText(selectedDescription);
 
     }
 

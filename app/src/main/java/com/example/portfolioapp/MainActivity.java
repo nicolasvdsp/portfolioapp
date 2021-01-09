@@ -22,9 +22,9 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String myURL = "http://hammerheaddesign.be/api";
 
-    private final LinkedList<String> mProjectList = new LinkedList<>();
-    private final LinkedList<String> mProjectListSecond = new LinkedList<>();
-    //private final LinkedList<String> mProjectList_description = new LinkedList<>();
+    private final LinkedList<String> mProjectList_title = new LinkedList<>();
+    private final LinkedList<String> mProjectList_image = new LinkedList<>();
+    private final LinkedList<String> mProjectList_description = new LinkedList<>();
     private RecyclerView mRecyclerView;
     private PortfolioAdapter mAdapter;
     RequestQueue mQueue;
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         mQueue = Volley.newRequestQueue(this);
 
         mRecyclerView = findViewById(R.id.rv_projects);
-        mAdapter = new PortfolioAdapter(this, mProjectList, mProjectListSecond/*, mProjectList_description*/); // List is empty at this point
+        mAdapter = new PortfolioAdapter(this, mProjectList_title, mProjectList_image, mProjectList_description); // List is empty at this point
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -47,9 +47,9 @@ public class MainActivity extends AppCompatActivity {
                     for (int i=0; i<response.length(); i++) {
                         try {
                             JSONObject projectjson = response.getJSONObject(i);
-                            mProjectList.add(projectjson.getString("title")); //title is van de drupal api
-                            mProjectListSecond.add(projectjson.getString("image"));
-                            //mProjectList_description.add(projectjson.getString("description"));
+                            mProjectList_title.add(projectjson.getString("title")); //title is van de drupal api
+                            mProjectList_image.add(projectjson.getString("image"));
+                            mProjectList_description.add(projectjson.getString("description"));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
