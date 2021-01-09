@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private final LinkedList<String> mProjectList = new LinkedList<>();
     private final LinkedList<String> mProjectListSecond = new LinkedList<>();
+    //private final LinkedList<String> mProjectList_description = new LinkedList<>();
     private RecyclerView mRecyclerView;
     private PortfolioAdapter mAdapter;
     RequestQueue mQueue;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         mQueue = Volley.newRequestQueue(this);
 
         mRecyclerView = findViewById(R.id.rv_projects);
-        mAdapter = new PortfolioAdapter(this, mProjectList, mProjectListSecond); // List is empty at this point
+        mAdapter = new PortfolioAdapter(this, mProjectList, mProjectListSecond/*, mProjectList_description*/); // List is empty at this point
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
                             JSONObject projectjson = response.getJSONObject(i);
                             mProjectList.add(projectjson.getString("title")); //title is van de drupal api
                             mProjectListSecond.add(projectjson.getString("image"));
+                            //mProjectList_description.add(projectjson.getString("description"));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -65,9 +67,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void toDetail(View v) {
-        Intent intent = new Intent (this, ProjectDetail.class);
-        startActivity(intent);
-    }
+//    public void toDetail(View v) {
+//        Intent intent = new Intent (this, ProjectDetail.class);
+//        startActivity(intent);
+//    }
 
 }
