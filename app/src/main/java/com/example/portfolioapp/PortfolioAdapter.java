@@ -55,7 +55,6 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Proj
             //geen holders meer toevoegen als je niets in de recyclerview wil steken
 
             String description = mProjectList_description.get(position);
-            // hieronder de rest van de detal_veldjes
 
             holder.btn_toDetail.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -63,6 +62,7 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Proj
                     Intent intent = new Intent (v.getContext(), ProjectDetail.class);
 
                     intent.putExtra("title", title); //verwijst naar String title = mProjectList
+                    intent.putExtra("image", image);
                     intent.putExtra("description", description);
 
 
