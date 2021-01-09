@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String myURL = "http://hammerheaddesign.be/api";
 
     private final LinkedList<String> mProjectList = new LinkedList<>();
+    private final LinkedList<String> mProjectListSecond = new LinkedList<>();
     private RecyclerView mRecyclerView;
     private PortfolioAdapter mAdapter;
     RequestQueue mQueue;
@@ -32,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         mQueue = Volley.newRequestQueue(this);
 
         mRecyclerView = findViewById(R.id.rv_projects);
-        mAdapter = new PortfolioAdapter(this, mProjectList); // List is empty at this point
+        mAdapter = new PortfolioAdapter(this, mProjectList, mProjectListSecond); // List is empty at this point
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             JSONObject projectjson = response.getJSONObject(i);
                             mProjectList.add(projectjson.getString("title")); //title is van de drupal api
+                            mProjectListSecond.add(projectjson.getString("image"));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -53,11 +57,17 @@ public class MainActivity extends AppCompatActivity {
                 },
                 error -> {
                     // Method executed when there is an error.
-                    Log.e("FizzBuzz", error.getMessage());
+                    Log.e("The app is not responding", error.getMessage());
                 });
 
         // Set the request up for execution
         mQueue.add(request);
+    }
+
+
+    public void toDetail(View v) {
+        Intent intent = new Intent (this, ProjectDetail.class);
+        startActivity(intent);
     }
 
 }
