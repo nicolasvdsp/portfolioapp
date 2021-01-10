@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,6 +28,8 @@ public class ProjectDetail extends AppCompatActivity {
     TextView mCourseView;
     TextView mSkillView;
     TextView mCategoryView;
+
+    Button btn_share;
 
 
 
@@ -59,6 +62,23 @@ public class ProjectDetail extends AppCompatActivity {
         mCourseView.setText("Course: " + selectedCourse);
         mSkillView.setText("Skills: " + selectedSkill);
         mCategoryView.setText("Category: " + selectedCategory);
+
+
+        btn_share = findViewById(R.id.btn_share);
+
+        btn_share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.putExtra(Intent.EXTRA_TEXT, "Check out " + selectedTitle + "!\n" + "See this project on " + selectedUrl);
+                intent.setType("text/plain");
+
+                if(intent.resolveActivity(v.getContext().getPackageManager()) != null) { //If statement gaat na of er wel andere apps zijn op het toestel die luisteren naar een impliciete intent.
+                    startActivity(intent);
+                }
+            }
+        });
+
     }
 
 }
