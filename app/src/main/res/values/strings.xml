@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">portfolioapp</string>
+    <string name="app_name">Hammerhead design: portfolio</string>
+    <string name="label_url">Go to project: </string>
+    <string name="label_course">Course: </string>
+    <string name="label_skill">Skill: </string>
+    <string name="label_category">Category: </string>
 </resources>

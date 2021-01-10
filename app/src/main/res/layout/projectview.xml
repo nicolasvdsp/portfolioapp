@@ -16,7 +16,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:background="#9eccc7">
+    android:background="#F6F6F3">
 
     <ImageView
         android:id="@+id/iv_image"
@@ -49,7 +49,9 @@
         android:text="Details"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintRight_toRightOf="@+id/tv_title" />
+        app:layout_constraintRight_toRightOf="@+id/tv_title"
+        />
+
 
     <!--        <TextView-->
 <!--            android:id="@+id/course"-->

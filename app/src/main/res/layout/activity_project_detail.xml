@@ -1,28 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ProjectDetail">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/selected_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="40dp"
+        android:paddingTop="20dp"
+        android:orientation="vertical"
+        tools:context=".ProjectDetail"
+        >
 
-    <ImageView
-        android:id="@+id/selected_image"
-        android:layout_width="500dp"
-        android:layout_height="500dp"/>
+        <!--Title-->
+        <TextView
+            android:id="@+id/selected_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:layout_marginBottom="20dp"
+            tools:ignore="MissingConstraints"
+            />
 
-    <TextView
-        android:id="@+id/selected_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        <!--Image-->
+        <ImageView
+            android:id="@+id/selected_image"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp" />
+
+        <!--Description-->
+        <TextView
+                android:id="@+id/selected_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                tools:ignore="MissingConstraints"
+                />
+
+        <!--URL-->
+        <TextView
+            android:id="@+id/selected_url"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:layout_marginBottom="40dp"
+            />
+
+        <!--Course-->
+        <TextView
+            android:id="@+id/selected_course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            />
+
+        <!--Skill-->
+        <TextView
+            android:id="@+id/selected_skill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            />
+
+        <!--Category-->
+        <TextView
+            android:id="@+id/selected_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <!--Share button-->
+        <Button
+            android:id="@+id/btn_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Share now"
+            android:layout_gravity="center"
+            />
 
 
 
-</LinearLayout>
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    </LinearLayout>
+
+</ScrollView>

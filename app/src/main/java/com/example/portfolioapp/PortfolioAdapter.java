@@ -23,15 +23,30 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Proj
         private final LinkedList<String> mProjectList_title;
         private final LinkedList<String> mProjectList_image;
         private final LinkedList<String> mProjectList_description;
+        private final LinkedList<String> mProjectList_url;
+        private final LinkedList<String> mProjectList_course;
+        private final LinkedList<String> mProjectList_skill;
+        private final LinkedList<String> mProjectList_category;
 
         private LayoutInflater mInflater;
 
         public PortfolioAdapter(Context context, //dit is de constructor
-                                 LinkedList<String> projectList_title, LinkedList<String> projectList_image, LinkedList<String> projectList_description) {
+                                 LinkedList<String> projectList_title,
+                                 LinkedList<String> projectList_image,
+                                 LinkedList<String> projectList_description,
+                                 LinkedList<String> projectList_url,
+                                 LinkedList<String> projectList_course,
+                                 LinkedList<String> projectList_skill,
+                                 LinkedList<String> projectList_category)
+        {
             mInflater = LayoutInflater.from(context);
             this.mProjectList_title = projectList_title;
             this.mProjectList_image = projectList_image;
             this.mProjectList_description = projectList_description;
+            this.mProjectList_url = projectList_url;
+            this.mProjectList_course = projectList_course;
+            this.mProjectList_skill = projectList_skill;
+            this.mProjectList_category = projectList_category;
         }
 
 
@@ -49,12 +64,18 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Proj
         public void onBindViewHolder(@NonNull ProjectViewHolder holder, int position) {
             String title = mProjectList_title.get(position);
             String image = mProjectList_image.get(position);
+            String description = mProjectList_description.get(position);
+            String url = mProjectList_url.get(position);
+            String course = mProjectList_course.get(position);
+            String skill = mProjectList_skill.get(position);
+            String category = mProjectList_category.get(position);
 
+
+            //Enkel als het in de recyclerview moet komen
             holder.titleView.setText(String.format("%s", title));
             Picasso.get().load("http://www.hammerheaddesign.be" + image).into(holder.imageView);
             //geen holders meer toevoegen als je niets in de recyclerview wil steken
 
-            String description = mProjectList_description.get(position);
 
             holder.btn_toDetail.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -64,6 +85,10 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Proj
                     intent.putExtra("title", title); //verwijst naar String title = mProjectList
                     intent.putExtra("image", image);
                     intent.putExtra("description", description);
+                    intent.putExtra("project_url", url);
+                    intent.putExtra("course", course);
+                    intent.putExtra("skill", skill);
+                    intent.putExtra("category", category);
 
 
                     v.getContext().startActivity(intent);
@@ -84,6 +109,10 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Proj
             public final TextView titleView;
             public final ImageView imageView;
             public final TextView descriptionView;
+            public final TextView urlView;
+            public final TextView courseView;
+            public final TextView skillView;
+            public final TextView categoryView;
 
             public ProjectViewHolder(@NonNull View itemView, @NonNull PortfolioAdapter adapter) {
                 super(itemView);
@@ -91,6 +120,12 @@ public class PortfolioAdapter extends RecyclerView.Adapter<PortfolioAdapter.Proj
                 titleView = itemView.findViewById(R.id.tv_title);
                 imageView = itemView.findViewById(R.id.iv_image);
                 descriptionView = itemView.findViewById(R.id.selected_description);
+                urlView = itemView.findViewById(R.id.selected_url);
+                courseView = itemView.findViewById(R.id.selected_course);
+                skillView = itemView.findViewById(R.id.selected_skill);
+                categoryView = itemView.findViewById(R.id.selected_category);
+
+
                 mAdapter = adapter;
             }
         }

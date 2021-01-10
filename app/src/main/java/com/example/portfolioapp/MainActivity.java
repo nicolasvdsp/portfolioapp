@@ -25,6 +25,11 @@ public class MainActivity extends AppCompatActivity {
     private final LinkedList<String> mProjectList_title = new LinkedList<>();
     private final LinkedList<String> mProjectList_image = new LinkedList<>();
     private final LinkedList<String> mProjectList_description = new LinkedList<>();
+    private final LinkedList<String> mProjectList_url = new LinkedList<>();
+    private final LinkedList<String> mProjectList_course = new LinkedList<>();
+    private final LinkedList<String> mProjectList_skill = new LinkedList<>();
+    private final LinkedList<String> mProjectList_category = new LinkedList<>();
+
     private RecyclerView mRecyclerView;
     private PortfolioAdapter mAdapter;
     RequestQueue mQueue;
@@ -36,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         mQueue = Volley.newRequestQueue(this);
 
         mRecyclerView = findViewById(R.id.rv_projects);
-        mAdapter = new PortfolioAdapter(this, mProjectList_title, mProjectList_image, mProjectList_description); // List is empty at this point
+        mAdapter = new PortfolioAdapter(this, mProjectList_title, mProjectList_image, mProjectList_description, mProjectList_url, mProjectList_course, mProjectList_skill, mProjectList_category); // List is empty at this point
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -50,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
                             mProjectList_title.add(projectjson.getString("title")); //title is van de drupal api
                             mProjectList_image.add(projectjson.getString("image"));
                             mProjectList_description.add(projectjson.getString("description"));
+                            mProjectList_url.add(projectjson.getString("project_url"));
+                            mProjectList_course.add(projectjson.getString("course"));
+                            mProjectList_skill.add(projectjson.getString("skill"));
+                            mProjectList_category.add(projectjson.getString("category"));
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -65,11 +75,5 @@ public class MainActivity extends AppCompatActivity {
         // Set the request up for execution
         mQueue.add(request);
     }
-
-
-//    public void toDetail(View v) {
-//        Intent intent = new Intent (this, ProjectDetail.class);
-//        startActivity(intent);
-//    }
 
 }
