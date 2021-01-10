@@ -8,12 +8,42 @@
     android:orientation="vertical"
     tools:context=".ProjectDetail">
 
+    <TextView
+        android:id="@+id/tv_welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:padding="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="5dp"
+        android:text="Hi there, welcom on my portfolio app. You can check out my latest works or contact me!"
+        />
+
+    <Button
+        android:id="@+id/btn_toProject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Check out my work!"
+        android:layout_gravity="center"
+        android:onClick="toProjectList"/>
+
+    <TextView
+        android:id="@+id/tv_contactText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:padding="40dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="5dp"
+        android:text="Or learn a little more about me. You can find out my story about how I became a designer. You'll also find my contact details."
+        />
+
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kaaskorst zonder kaas"
+        android:text="About me"
         android:layout_gravity="center"
-        android:onClick="toOtherScreen"/>
+        android:onClick="toContactScreen"/>
 
 </LinearLayout>

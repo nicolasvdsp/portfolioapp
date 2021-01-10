@@ -14,8 +14,13 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
     }
 
-    public void toOtherScreen(View v) {
+    public void toProjectList(View v) {
         Intent intent = new Intent (this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void toContactScreen(View v) {
+        Intent intent = new Intent (this, ContactActivity.class);
         startActivity(intent);
     }
 }
